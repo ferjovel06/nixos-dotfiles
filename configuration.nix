@@ -40,9 +40,9 @@
   # services.xserver.enable = true;
   services.xserver.windowManager.dwm = {
     enable = true;
-    package = pkgs.dwm.overrideAttrs {
+    package = pkgs.dwm.overrideAttrs (oldAttrs: {
       src = pkgs.lib.cleanSource ./config/dwm;
-    };
+    });
   };
 
   services.xserver = {
