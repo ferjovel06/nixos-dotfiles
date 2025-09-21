@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
+      ./hardware-configuration.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -38,6 +38,13 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
+  services.xserver.windowManager.dwm = {
+    enable = true;
+    package = pkgs.dwm.overrideAttrs {
+      src = ~/nixos-dotfiles/dwm;
+    };
+  };
+
   services.xserver = {
     enable = true;
     windowManager.qtile.enable = true;
@@ -51,7 +58,7 @@
    enable = true;
    backend = "glx";
    fade = true;
-};
+ };
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -99,6 +106,7 @@
     pfetch
     tealdeer
     xclip
+    neofetch
 
     # needed rust pkgs
     rustup
