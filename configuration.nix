@@ -41,7 +41,7 @@
   services.xserver.windowManager.dwm = {
     enable = true;
     package = pkgs.dwm.overrideAttrs {
-      src = ./config/dwm;
+      src = pkgs.lib.cleanSource ./config/dwm;
     };
   };
 
